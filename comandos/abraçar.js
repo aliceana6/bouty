@@ -24,8 +24,8 @@ exports.run = (client, message, args) => {
         "https://data.whicdn.com/images/310192271/original.gif",
         "https://78.media.tumblr.com/064596e2fb0101675b89d79ac41141e0/tumblr_p8g2jmxCLD1qc9mvbo1_540.gif",
     ]
-    let hugresult = Math.floor((Math.random() * hug.length));
-    if (!args[0]) {
+    let hugresult = hug[Math.floor(Math.random() * hug.length)]
+    /*if (!args[0]) {
         const ghembed = new Discord.RichEmbed()
             .setColor(0xFF0000)
             .setTitle(`${message.author.username} se abraçou...! (esquisito)`)
@@ -51,6 +51,25 @@ exports.run = (client, message, args) => {
         .setImage('https://media3.giphy.com/media/ArLxZ4PebH2Ug/giphy.gif')
     message.channel.send({
         embed: ghembed
-    })
-
+    })*/
+    const ghembed = new Discord.RichEmbed()
+    if(!args[0] || message.mentions.users.first().id === message.author.id || args[0] && args[0] === message.author.id){
+        ghembed.setTitle(`${message.author.username} se abraçou...! (esquisito)`)
+        .setColor(0xFF0000)
+        .setImage(hugresult)
+    }
+    if(message.mentions.users.first() || (args[0] && client.users.get(args[0]))){
+        const user = message.mentions.users.size > 0 ? message.mentions.users.first() : args[0] && client.users.get(args[0]) ? client.users.get(args[0]) : false
+        if(!user){
+            ghembed.setColor(0xFF0000)
+            .setTitle(`${message.author.username} se abraçou...! (esquisito)`)
+            .setImage(hugresult)
+        } else {
+            ghembed.setTitle(`${message.author.username} deu um abraço no(a) ${user.username}. Que fofo!`)
+            .setColor(0xFF0000)
+            .setImage(hugresult)
+        }
+    }
+    message.channel.send(ghembed)
+    return;
 }
