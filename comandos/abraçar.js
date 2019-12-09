@@ -25,33 +25,6 @@ exports.run = (client, message, args) => {
         "https://78.media.tumblr.com/064596e2fb0101675b89d79ac41141e0/tumblr_p8g2jmxCLD1qc9mvbo1_540.gif",
     ]
     let hugresult = hug[Math.floor(Math.random() * hug.length)]
-    /*if (!args[0]) {
-        const ghembed = new Discord.RichEmbed()
-            .setColor(0xFF0000)
-            .setTitle(`${message.author.username} se abraçou...! (esquisito)`)
-            .setImage('https://media3.giphy.com/media/ArLxZ4PebH2Ug/giphy.gif')
-        message.channel.send({
-            embed: ghembed
-        })
-        return;
-    }
-    if (!message.mentions.members.first().user.username === message.isMentioned(message.author)) {
-        const hembed = new Discord.RichEmbed()
-            .setColor(0xFF0000)
-            .setTitle(`${message.author.username} deu um abraço no(a) ${message.mentions.members.first().user.username} Que fofo!`)
-            .setImage(hug[hugresult])
-        message.channel.send({
-            embed: hembed
-        })
-        return;
-    }
-    const ghembed = new Discord.RichEmbed()
-        .setColor(0xFF0000)
-        .setTitle(`${message.author.username} se abraçou...! (esquisito)`)
-        .setImage('https://media3.giphy.com/media/ArLxZ4PebH2Ug/giphy.gif')
-    message.channel.send({
-        embed: ghembed
-    })*/
     const ghembed = new Discord.RichEmbed()
     if(!args[0] || message.mentions.users.first().id === message.author.id || args[0] && args[0] === message.author.id){
         ghembed.setTitle(`${message.author.username} se abraçou...! (esquisito)`)
